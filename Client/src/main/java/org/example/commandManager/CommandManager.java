@@ -29,6 +29,10 @@ public class CommandManager {
         commandManager.put("print_descending", this::print_descending);
     }
 
+    public LinkedHashMap<String, IExecutable> getCommandManager() {
+        return commandManager;
+    }
+
     private MessageFromClient help() {
         String result = "help: вывести справку по доступным командам\n" +
                 "info : вывести в стандартыный поток вывода информацию о коллекции (тип, дата инициализации, колличество элементов и т.д.)\n" +
@@ -58,6 +62,8 @@ public class CommandManager {
     }
 
     private MessageFromClient add() {
+        //TODO: add НЕ делает объект, а получает его из
+        // переорпделенного на 2 случая жизни команд хелпера
         return new MessageFromClient(null, null, null);
     }
 

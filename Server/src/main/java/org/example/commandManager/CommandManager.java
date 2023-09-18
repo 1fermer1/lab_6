@@ -1,7 +1,5 @@
 package org.example.commandManager;
 
-import org.example.messages.MessageFromServer;
-
 import java.util.LinkedHashMap;
 
 public class CommandManager {
@@ -31,7 +29,11 @@ public class CommandManager {
         commandManager.put("print_descending", this::print_descending);
     }
 
-    private MessageFromServer help() {
+    public LinkedHashMap<String, IExecutable> getCommandManager() {
+        return commandManager;
+    }
+
+    private String help() {
         String result = "help: вывести справку по доступным командам\n" +
                         "info : вывести в стандартыный поток вывода информацию о коллекции (тип, дата инициализации, колличество элементов и т.д.)\n" +
                         "show: вывести в стандартный поток вывода все элементы коллекции в строковом представлении\n" +
@@ -49,66 +51,69 @@ public class CommandManager {
                         "print_ascending: вывести элементы коллекции в порядке возрвстания\n" +
                         "print_descending: вывести элементы коллекции в порядке убывания";
         System.out.println(result);
-        return new MessageFromServer(null, null);
+        return null;
     }
 
-    private MessageFromServer info() {
-        return new MessageFromServer(null, null);
+    private String info() {
+        return "";
     }
 
-    private MessageFromServer show() {
-        return new MessageFromServer(null, null);
+    private String show() {
+        return "";
     }
 
-    private MessageFromServer add() {
-        return new MessageFromServer(null, null);
+    private String add() {
+        //TODO: add НЕ делает объект, а получает его из
+        // переорпделенного на 3 случая жизни команд хелпера
+        // И ТАМ ЖЕ ПОЛУЧАЕТ ID
+        return null;
     }
 
-    private MessageFromServer update() {
-        return new MessageFromServer(null, null);
+    private String update() {
+        return null;
     }
 
-    private MessageFromServer remove_by_id() {
-        return new MessageFromServer(null, null);
+    private String remove_by_id() {
+        return null;
     }
 
-    private MessageFromServer clear() {
-        return new MessageFromServer(null, null);
+    private String clear() {
+        return null;
     }
 
-    private MessageFromServer save() {
-        return new MessageFromServer(null, null);
+    private String save() {
+        return null;
     }
 
-    private MessageFromServer execute_script() {
-        return new MessageFromServer(null, null);
+    private String execute_script() {
+        return null;
     }
 
-    private MessageFromServer exit() {
-        return new MessageFromServer(null, null);
+    private String exit() {
+        return null;
     }
 
-    private MessageFromServer insert_at() {
-        return new MessageFromServer(null, null);
+    private String insert_at() {
+        return null;
     }
 
-    private MessageFromServer reorder() {
-        return new MessageFromServer(null, null);
+    private String reorder() {
+        return null;
     }
 
-    private MessageFromServer history() {
-        return new MessageFromServer(null, null);
+    private String history() {
+        return "";
     }
 
-    private MessageFromServer count_less_than_distance() {
-        return new MessageFromServer(null, null);
+    private String count_less_than_distance() {
+        return "";
     }
 
-    private MessageFromServer print_ascending() {
-        return new MessageFromServer(null, null);
+    private String print_ascending() {
+        return "";
     }
 
-    private MessageFromServer print_descending() {
-        return new MessageFromServer(null, null);
+    private String print_descending() {
+        return "";
     }
 }
