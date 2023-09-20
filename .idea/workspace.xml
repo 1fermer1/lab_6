@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="a9ffd21b-b81e-4656-97e6-8691d0fe8cd4" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Client/src/main/java/org/example/commandManager/CommandConsoleManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Client/src/main/java/org/example/commandManager/CommandFileManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Server/src/main/java/org/example/commandManager/CommandConsoleManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Server/src/main/java/org/example/commandManager/CommandFileManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/main/java/org/example/commandManager/CommandHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/main/java/org/example/commandManager/CommandHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/main/java/org/example/commandManager/CommandManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/org/example/commandManager/CommandTCPManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/main/java/org/example/main/LauncherService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/main/java/org/example/main/LauncherService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/main/java/org/example/main/Mode.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/main/java/org/example/main/UserInputService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Common/src/main/java/org/example/data/Coordinates.java" beforeDir="false" afterPath="$PROJECT_DIR$/Common/src/main/java/org/example/data/Coordinates.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Common/src/main/java/org/example/data/Location.java" beforeDir="false" afterPath="$PROJECT_DIR$/Common/src/main/java/org/example/data/Location.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Common/src/main/java/org/example/jsonLogic/ZonedDateTimeAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/main/java/org/example/jsonLogic/ZonedDateTimeAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Common/src/main/java/org/example/messages/MessageFromClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/Common/src/main/java/org/example/messages/MessageFromClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Common/src/main/java/org/example/validators/RouteFieldsValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/Common/src/main/java/org/example/validators/FieldsValidator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/org/example/collection/CollectionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/org/example/collection/CollectionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/org/example/commandManager/CommandHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/org/example/commandManager/CommandHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/org/example/commandManager/CommandManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/org/example/jsonLogic/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/org/example/jsonLogic/Parser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/org/example/main/LauncherService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/org/example/main/LauncherService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/org/example/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/org/example/main/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/org/example/main/Mode.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/org/example/main/UserInputService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/org/example/validators/FullRouteValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/org/example/validators/RouteValidator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/builds/config.env" beforeDir="false" afterPath="$PROJECT_DIR$/builds/config.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/builds/routes.json" beforeDir="false" afterPath="$PROJECT_DIR$/builds/routes.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/builds/server.jar" beforeDir="false" afterPath="$PROJECT_DIR$/builds/server.jar" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 0
+}</component>
+  <component name="ProjectId" id="2VYgiZvcifu1bY49kL0nu534RUd" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Hp/OneDrive - ITMO UNIVERSITY/Все за второй сем/consoleApplication&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Hp\OneDrive - ITMO UNIVERSITY\ITMO\first_year_dopsa\lab_6\Client\src\main\java\org\example" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a9ffd21b-b81e-4656-97e6-8691d0fe8cd4" name="Changes" comment="" />
+      <created>1695018559370</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1695018559370</updated>
+      <workItem from="1695018563614" duration="4688000" />
+      <workItem from="1695026449186" duration="5483000" />
+      <workItem from="1695042681381" duration="1210000" />
+      <workItem from="1695141801381" duration="3890000" />
+      <workItem from="1695198306864" duration="11331000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Server/src/main/java/org/example/commandManager/CommandTCPManager.java</url>
+          <line>70</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
