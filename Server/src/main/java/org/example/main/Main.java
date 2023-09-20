@@ -12,7 +12,7 @@ public class Main {
 
         Parser parser = new Parser();
         CollectionHandler collectionHandler = new CollectionHandler();
-        collectionHandler.setCollection(parser.readFile("config.env"));
+        parser.readFile("config.env");
 
         LauncherService launcherService = new LauncherService();
         launcherService.init();

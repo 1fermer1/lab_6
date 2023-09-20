@@ -5,7 +5,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import org.example.collection.CollectionHandler;
 import org.example.data.Route;
-import org.example.validators.FullRouteValidator;
+import org.example.validators.RouteValidator;
 
 import java.io.*;
 import java.time.ZonedDateTime;
@@ -14,12 +14,8 @@ import java.util.Properties;
 
 public class Parser {
     private final Gson gson = new GsonBuilder().registerTypeAdapter(ZonedDateTime.class, new ZonedDateTimeAdapter()).create();
-    private final FullRouteValidator fullRouteValidator = new FullRouteValidator();
-    private final CollectionHandler collectionHandler = new CollectionHandler();
 
-    public ArrayList<Route> readFile(String configName) {
-        ArrayList<Route> routesList = new ArrayList<>();
-
+    public void readFile(String configName) {
         Properties properties = new Properties();
         try (InputStream inputStream = new FileInputStream(configName)) {
             properties.load(inputStream);
@@ -34,9 +30,10 @@ public class Parser {
             while (reader.hasNext()) {
                 JsonObject obj = JsonParser.parseReader(reader).getAsJsonObject();
                 Route route = gson.fromJson(obj, Route.class);
-                if (fullRouteValidator.checkRoute(route)) {
-                    collectionHandler.add(route);
+                if (RouteValidator.checkRoute(route)) {
+                    CollectionHandler.add(route);
                 }
+                System.out.print("\n");
             }
             reader.endArray();
         } catch (IOException ex) {
@@ -45,7 +42,6 @@ public class Parser {
         }
 
         System.out.println("Import successful");
-        return routesList;
     }
 
     public void writeFile(ArrayList<Route> routesList, String configName) {

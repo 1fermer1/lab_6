@@ -1,9 +1,10 @@
 package org.example.jsonLogic;
 
+import com.google.gson.*;
+
 import java.lang.reflect.Type;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
-import com.google.gson.*;
 
 public class ZonedDateTimeAdapter implements JsonDeserializer<ZonedDateTime>, JsonSerializer<ZonedDateTime> {
     private static final DateTimeFormatter formatter = DateTimeFormatter.ISO_ZONED_DATE_TIME;

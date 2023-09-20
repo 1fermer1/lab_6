@@ -6,35 +6,38 @@ import java.time.ZonedDateTime;
 import java.util.ArrayList;
 
 public class CollectionHandler {
-    private final ZonedDateTime collectionCreationDate = ZonedDateTime.now();
-    private static ArrayList<Route> collection = new ArrayList<>();
+    private final static ZonedDateTime collectionCreationDate = ZonedDateTime.now();
+    private static ArrayList<Route> collection = new ArrayList<Route>();
 
-    public ZonedDateTime getCollectionCreationDate() {
-        return collectionCreationDate;
+    public static ZonedDateTime getCollectionCreationDate() {
+        return CollectionHandler.collectionCreationDate;
     }
-    public ArrayList<Route> getCollection() {
-        return collection;
+    public static ArrayList<Route> getCollection() {
+        return CollectionHandler.collection;
     }
-    public void setCollection(ArrayList<Route> collection) {
+    public static void setCollection(ArrayList<Route> collection) {
         CollectionHandler.collection = collection;
     }
-
-    public void add(Route route) {
-        collection.add(route);
-    }
-    public void update(int index, Route route) {
-        collection.set(index, route);
-    }
-    public void insertAt(int index, Route route) {
-        collection.add(index, route);
-    }
-    public void remove(Route route) {
-        collection.remove(route);
+    public static int getCollectionSize() {
+        return CollectionHandler.collection.size();
     }
 
-    public ArrayList<Integer> getIdsArray() {
+    public static void add(Route route) {
+        CollectionHandler.collection.add(route);
+    }
+    public static void update(int index, Route route) {
+        CollectionHandler.collection.set(index, route);
+    }
+    public static void insertAt(int index, Route route) {
+        CollectionHandler.collection.add(index, route);
+    }
+    public static void remove(Route route) {
+        CollectionHandler.collection.remove(route);
+    }
+
+    public static ArrayList<Integer> getIdsArray() {
         ArrayList<Integer> idsArray = new ArrayList<>();
-        for (Route route : collection) {
+        for (Route route : CollectionHandler.collection) {
             idsArray.add(route.getId());
         }
         return idsArray;
