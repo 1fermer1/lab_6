@@ -27,8 +27,11 @@ public class CommandFileManager {
             }
             try {
                 recursionCounter++;
+                if (splitCommand[0].isEmpty()) {
+                    continue;
+                }
                 String answer = launcherService.mega(commandManager.get(splitCommand[0]).execute());
-                if (recursionCounter > 400) {
+                if (recursionCounter > 30000) {
                     return;
                 }
                 System.out.print(answer == null ? "" : answer + "\n");
