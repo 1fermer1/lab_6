@@ -4,13 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e0a55187-0248-4223-b540-c7553a8f0e4d" name="Changes" comment="теперь точно вся база работает">
-      <change afterPath="$PROJECT_DIR$/1500.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sss.txt" afterDir="false" />
+    <list default="true" id="e0a55187-0248-4223-b540-c7553a8f0e4d" name="Changes" comment="косметика">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/main/java/org/example/commandManager/CommandFileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/main/java/org/example/commandManager/CommandFileManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/main/java/org/example/main/LauncherService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/main/java/org/example/main/LauncherService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/org/example/commandManager/CommandTCPManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/org/example/commandManager/CommandTCPManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/org/example/main/LauncherService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/org/example/main/LauncherService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/builds/client.jar" beforeDir="false" afterPath="$PROJECT_DIR$/builds/client.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/builds/server.jar" beforeDir="false" afterPath="$PROJECT_DIR$/builds/server.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/report/P3116 Ткачев_Илья_Андреевич ЛР6 Отчет Программирование.docx" beforeDir="false" afterPath="$PROJECT_DIR$/report/P3116 Ткачев_Илья_Андреевич ЛР6 Отчет Программирование.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/report/P3116 Ткачев_Илья_Андреевич ЛР6 Отчет Программирование.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/report/P3116 Ткачев_Илья_Андреевич ЛР6 Отчет Программирование.pdf" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,7 +71,10 @@
       <workItem from="1695257443400" duration="5882000" />
       <workItem from="1695264109893" duration="2162000" />
       <workItem from="1695280263911" duration="271000" />
-      <workItem from="1695284334746" duration="3038000" />
+      <workItem from="1695284334746" duration="3078000" />
+      <workItem from="1695292508982" duration="370000" />
+      <workItem from="1695295095724" duration="506000" />
+      <workItem from="1695296110031" duration="3433000" />
     </task>
     <task id="LOCAL-00001" summary="работает!!! (если не считать половину команд из консоли сервера)">
       <option name="closed" value="true" />
@@ -87,7 +92,15 @@
       <option name="project" value="LOCAL" />
       <updated>1695266249878</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="косметика">
+      <option name="closed" value="true" />
+      <created>1695287842023</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1695287842023</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -96,6 +109,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="работает!!! (если не считать половину команд из консоли сервера)" />
     <MESSAGE value="теперь точно вся база работает" />
-    <option name="LAST_COMMIT_MESSAGE" value="теперь точно вся база работает" />
+    <MESSAGE value="косметика" />
+    <option name="LAST_COMMIT_MESSAGE" value="косметика" />
   </component>
 </project>

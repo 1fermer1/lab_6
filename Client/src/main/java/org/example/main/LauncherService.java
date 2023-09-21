@@ -61,7 +61,8 @@ public class LauncherService {
     public String mega(MessageFromClient message) throws IOException {
         SocketChannel socketChannel = SocketChannel.open();
 
-        socketChannel.connect(new InetSocketAddress("127.0.0.1", 8000));
+        //serverSocketChannel.bind(new InetSocketAddress("127.0.0.1", 8000));
+        socketChannel.connect(new InetSocketAddress("172.28.25.176", 63099));
 
         // Send command to server
         ByteBuffer buffer = ByteBuffer.wrap(gson.toJson(message, MessageFromClient.class).getBytes());

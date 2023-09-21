@@ -40,7 +40,8 @@ public class LauncherService {
                 ServerSocketChannel serverSocketChannel = ServerSocketChannel.open();
         ) {
             bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-            serverSocketChannel.bind(new InetSocketAddress("127.0.0.1", 8000));
+            //serverSocketChannel.bind(new InetSocketAddress("127.0.0.1", 8000));
+            serverSocketChannel.bind(new InetSocketAddress("172.28.25.176", 63099));
 
             while (true) {
                 SocketChannel socketChannel = serverSocketChannel.accept();

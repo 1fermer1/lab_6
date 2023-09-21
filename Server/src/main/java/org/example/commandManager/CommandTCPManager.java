@@ -8,9 +8,8 @@ import org.example.jsonLogic.Parser;
 import org.example.messages.MessageFromServer;
 import org.example.validators.RouteValidator;
 
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.TreeSet;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class CommandTCPManager {
     private LinkedHashMap<String, IExecutable> commandManager;
@@ -66,8 +65,13 @@ public class CommandTCPManager {
     }
 
     private MessageFromServer show() {
+
         String result = "";
-        for (Route route : CollectionHandler.getCollection()) {
+
+        List<Route> routes = CollectionHandler.getCollection().stream()
+                .sorted(Route::compareTo)
+                .collect(Collectors.toList());
+        for (Route route : routes) {
             result += route + "\n\n";
         }
         result = result.substring(0, result.length() - 2);
@@ -134,10 +138,14 @@ public class CommandTCPManager {
     }
 
     private MessageFromServer reorder() {
-        ArrayList<Route> reorderCollection = new ArrayList<Route>();
-        for (Route route : CollectionHandler.getCollection()) {
-            reorderCollection.add(0, route);
-        }
+//        ArrayList<Route> reorderCollection = new ArrayList<Route>();
+        List<Route> reorder = CollectionHandler.getCollection().stream()
+                .sorted(Collections.reverseOrder())
+                .collect(Collectors.toList());
+//        for (Route route : CollectionHandler.getCollection()) {
+//            reorderCollection.add(0, route);
+//        }
+        ArrayList<Route> reorderCollection = new ArrayList<>(reorder);
         CollectionHandler.setCollection(reorderCollection);
         return new MessageFromServer(null);
     }
