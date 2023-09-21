@@ -12,7 +12,6 @@ import java.util.ArrayList;
 
 public class CommandHelper {
     private static final BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-    private static Route route;
     private static String argument;
 
     public static void setArgument(String argument) {
@@ -20,10 +19,6 @@ public class CommandHelper {
     }
     public static String getArgument() {
         return argument;
-    }
-
-    public static Route getRoute() {
-        return route;
     }
 
     public static Route makeRoute() {
@@ -38,10 +33,12 @@ public class CommandHelper {
         String locationToY = doField("location to Y", FieldsValidator::checkLocationY);
         String distance = doField("distance", FieldsValidator::checkDistance);
 
-        return new Route(name, new Coordinates(Long.parseLong(coordinateX), Integer.parseInt(coordinateY)),
+        Route route = new Route(name, new Coordinates(Long.parseLong(coordinateX), Integer.parseInt(coordinateY)),
                 new Location(locationFromName, Double.parseDouble(locationFromX), Double.parseDouble(locationFromY)),
                 new Location(locationToName, Double.parseDouble(locationToX), Double.parseDouble(locationToY)),
                 Integer.parseInt(distance));
+
+        return route;
     }  public static Object[] makeRoute(ArrayList<String> script, int index) {
         try {
             if (FieldsValidator.checkName(script.get(index)) &&
@@ -87,6 +84,7 @@ public class CommandHelper {
             String temp = reader.readLine();
             while (!validator.validate(temp)) {
                 System.out.println("Incorrect input");
+                System.out.print("Enter " + fieldName + " : ");
                 temp = reader.readLine();
             }
             return temp;

@@ -4,11 +4,14 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import org.example.commandManager.CommandConsoleManager;
 import org.example.commandManager.CommandHelper;
 import org.example.commandManager.CommandTCPManager;
 import org.example.commandManager.IExecutable;
+import org.example.commandManager.IConsolable;
 import org.example.jsonLogic.ZonedDateTimeAdapter;
 import org.example.messages.MessageFromClient;
+import org.example.messages.MessageFromServer;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -23,8 +26,8 @@ import java.util.LinkedHashMap;
 public class LauncherService {
     private final Gson gson = new GsonBuilder().registerTypeAdapter(ZonedDateTime.class, new ZonedDateTimeAdapter()).create();
     private BufferedReader bufferedReader;
-    private CommandHelper commandHelper = new CommandHelper();
-    private LinkedHashMap<String, IExecutable> commandManager = new CommandTCPManager().getCommandManager();
+    private final LinkedHashMap<String, IExecutable> commandTCPManager = new CommandTCPManager().getCommandManager();
+    private final LinkedHashMap<String, IConsolable> commandConsoleManager = new CommandConsoleManager().getCommandManager();
 
     public void init() {
         System.out.println("Server application start work :)");
@@ -32,7 +35,7 @@ public class LauncherService {
         launcher();
     }
 
-    public void launcher() {
+    private void launcher() {
         try (
                 ServerSocketChannel serverSocketChannel = ServerSocketChannel.open();
         ) {
@@ -42,7 +45,7 @@ public class LauncherService {
             while (true) {
                 SocketChannel socketChannel = serverSocketChannel.accept();
 
-                // Чтение запроса в байтах
+                // Read request in bytes
                 ByteBuffer buffer = ByteBuffer.allocate(1024 * 1024);
                 socketChannel.read(buffer);
                 buffer.flip();
@@ -51,24 +54,24 @@ public class LauncherService {
                 String request = new String(bytes);
                 buffer.clear();
 
-                // Перевод в читаемый вид
+                // Request in custom class
                 JsonObject jsonObject = JsonParser.parseString(request).getAsJsonObject();
                 MessageFromClient message = gson.fromJson(jsonObject, MessageFromClient.class);
 
-                // Выполнение запроса
-                commandHelper.setHistory(message.getCommandName());
-                commandHelper.setArgument(message.getArgument());
-                commandHelper.setRoute(message.getRoute());
-                String answer = commandManager.get(message.getCommandName()).execute();
+                // Do request
+                CommandHelper.setHistory(message.getCommandName());
+                CommandHelper.setArgument(message.getArgument());
+                CommandHelper.setRoute(message.getRoute());
+                MessageFromServer answer = commandTCPManager.get(message.getCommandName()).execute();
 
-                // Отправка ответа
-                buffer = ByteBuffer.wrap(answer.getBytes());
+                // Send answer
+                buffer = ByteBuffer.wrap(gson.toJson(answer, MessageFromServer.class).getBytes());
                 socketChannel.write(buffer);
                 buffer.clear();
                 buffer.flip();
 
                 if (bufferedReader.ready()) {
-                    defaultCommand();
+                    consoleCommand();
                 }
             }
         } catch (IOException ex) {
@@ -76,28 +79,23 @@ public class LauncherService {
         }
     }
 
-    public void defaultCommand() {
-        String command;
+    private void consoleCommand() {
         try {
-            command = bufferedReader.readLine();
-        } catch (IOException ex) {
-            throw new RuntimeException(ex);
-        }
-
-        try {
-            String[] splitCommand = command.trim().split(" ");
+            String[] splitCommand = bufferedReader.readLine().trim().split(" ");
             if (splitCommand.length > 1) {
-                commandHelper.setArgument(splitCommand[1]);
+                CommandHelper.setArgument(splitCommand[1]);
             }
             try {
-                commandManager.get(splitCommand[0]).execute();
+                System.out.println(commandConsoleManager.get(splitCommand[0]).execute());
                 System.out.print("> ");
-            } catch (Exception ex) {
-                System.out.println("Введена некорректная команда, либо указаны неправильные аргументы. Вы можете ознакомиться со списком существующих команд, используя команду \"help\"");
+            } catch (NullPointerException ex) {
+                System.out.print("Incorrect input. write \"help\" to see all commands and their arguments\n> ");
             }
         } catch (NullPointerException ex) {
             System.out.println("Ctrl + D detected");
             System.exit(0);
+        } catch (IOException ex) {
+            throw new RuntimeException(ex);
         }
     }
 }

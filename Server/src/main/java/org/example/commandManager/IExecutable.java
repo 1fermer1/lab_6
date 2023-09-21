@@ -1,5 +1,7 @@
 package org.example.commandManager;
 
+import org.example.messages.MessageFromServer;
+
 public interface IExecutable {
-    String execute();
+    MessageFromServer execute();
 }

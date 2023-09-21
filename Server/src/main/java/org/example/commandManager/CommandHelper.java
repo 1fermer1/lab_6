@@ -19,40 +19,40 @@ public class CommandHelper {
     private static Route route;
     private static String argument;
 
-    public void setHistory(String command){
+    public static void setHistory(String command){
         for (int i = history.length - 1; i > 0; i--) {
             history[i] = history[i - 1];
         }
         history[0] = command;
     }
-    public String getHistory() {
-        String result = "> " + history[0];
+    public static String getHistory() {
+        String result = "" + history[0];
         for (int i = 1; i < history.length; i++) {
             if (history[i] == null) {
                 return result;
             }
-            result += "\n> " + history[i];
+            result += "\n" + history[i];
         }
         return result;
     }
 
-    public void setArgument(String argument) {
+    public static void setArgument(String argument) {
         CommandHelper.argument = argument;
     }
-    public void setRoute(Route route) {
+    public static void setRoute(Route route) {
         CommandHelper.route = route;
     }
 
-    public String getArgument() {
+    public static String getArgument() {
         return argument;
     }
-    public Route getRoute() {
+    public static Route getRoute() {
         if (CollectionHandler.getIdsArray().contains(route.getId())) {
             CommandHelper.route.setId(getNewId());
         }
         return CommandHelper.route;
     }
-    public int getNewId() {
+    public static int getNewId() {
         Random random = new Random();
         int temp = random.nextInt();
         temp = temp > 0 ? temp : -temp + 1;
@@ -127,6 +127,7 @@ public class CommandHelper {
             String temp = reader.readLine();
             while (!validator.validate(temp)) {
                 System.out.println("Incorrect input");
+                System.out.print("Enter " + fieldName + " : ");
                 temp = reader.readLine();
             }
             return temp;

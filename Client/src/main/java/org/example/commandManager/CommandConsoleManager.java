@@ -2,12 +2,13 @@ package org.example.commandManager;
 
 import org.example.messages.MessageFromClient;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 
 public class CommandConsoleManager {
-    private LinkedHashMap<String, IExecutable> commandManager;
-    private CommandHelper commandHelper = new CommandHelper();
+    private final LinkedHashMap<String, IExecutable> commandManager;
+    private BufferedReader reader;
 
     public CommandConsoleManager() {
         commandManager = new LinkedHashMap<>();
@@ -48,17 +49,15 @@ public class CommandConsoleManager {
     }
 
     private MessageFromClient add() {
-        // TODO: route
-        return new MessageFromClient("add", null, commandHelper.getRoute());
+        return new MessageFromClient("add", null, CommandHelper.makeRoute());
     }
 
     private MessageFromClient update() {
-        // TODO: route
-        return new MessageFromClient("update", commandHelper.getArgument(), commandHelper.getRoute());
+        return new MessageFromClient("update", CommandHelper.getArgument(), CommandHelper.makeRoute());
     }
 
     private MessageFromClient remove_by_id() {
-        return new MessageFromClient("remove_by_id", commandHelper.getArgument(), null);
+        return new MessageFromClient("remove_by_id", CommandHelper.getArgument(), null);
     }
 
     private MessageFromClient clear() {
@@ -67,8 +66,20 @@ public class CommandConsoleManager {
 
     private MessageFromClient execute_script() {
         ArrayList<String> script = new ArrayList<String>();
-        // TODO:
-        return new MessageFromClient("execute_script", commandHelper.getArgument(), null);
+        try {
+            reader = new BufferedReader(new InputStreamReader(new FileInputStream(new File(CommandHelper.getArgument()))));
+            String commandLine;
+            while ((commandLine = reader.readLine()) != null) {
+                script.add(commandLine);
+            }
+        } catch (IOException ex) {
+            throw new RuntimeException(ex);
+        }
+        CommandFileManager commandFileManager = new CommandFileManager();
+        commandFileManager.setScript(script);
+        commandFileManager.setIndex(0);
+        commandFileManager.launcher();
+        return new MessageFromClient("execute_script", null, null);
     }
 
     private MessageFromClient exit() {
@@ -77,8 +88,7 @@ public class CommandConsoleManager {
     }
 
     private MessageFromClient insert_at() {
-        // TODO: route
-        return new MessageFromClient("insert_at", commandHelper.getArgument(), commandHelper.getRoute());
+        return new MessageFromClient("insert_at", CommandHelper.getArgument(), CommandHelper.makeRoute());
     }
 
     private MessageFromClient reorder() {
@@ -90,7 +100,7 @@ public class CommandConsoleManager {
     }
 
     private MessageFromClient count_less_than_distance() {
-        return new MessageFromClient("count_less_than_distance", commandHelper.getArgument(), null);
+        return new MessageFromClient("count_less_than_distance", CommandHelper.getArgument(), null);
     }
 
     private MessageFromClient print_ascending() {

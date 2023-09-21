@@ -1,6 +1,7 @@
 package org.example.data;
 
 public class Location {
+    // TODO: name condition
     private String name; // Строка не может быть путсой, Поле может быть null
     private Double x; // Поле не может быть null
     private Double y; // Поле не может быть null

@@ -1,19 +1,19 @@
 package org.example.commandManager;
 
 import org.example.collection.CollectionHandler;
+import org.example.comparators.AscendingComparator;
+import org.example.comparators.DescendingComparator;
 import org.example.data.Route;
 import org.example.jsonLogic.Parser;
+import org.example.messages.MessageFromServer;
+import org.example.validators.RouteValidator;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
-import java.util.Objects;
+import java.util.TreeSet;
 
 public class CommandTCPManager {
     private LinkedHashMap<String, IExecutable> commandManager;
-    private CommandHelper commandHelper = new CommandHelper();
-    private CollectionHandler collectionHandler = new CollectionHandler();
-    private Parser parser = new Parser();
-    private UserInputService userInputService = new UserInputService();
 
     public CommandTCPManager() {
         commandManager = new LinkedHashMap<>();
@@ -26,10 +26,8 @@ public class CommandTCPManager {
         commandManager.put("update", this::update);
         commandManager.put("remove_by_id", this::remove_by_id);
         commandManager.put("clear", this::clear);
-        commandManager.put("save", this::save);
 
         commandManager.put("execute_script", this::execute_script);
-        commandManager.put("exit", this::exit);
         commandManager.put("insert_at", this::insert_at);
         commandManager.put("reorder", this::reorder);
 
@@ -43,8 +41,8 @@ public class CommandTCPManager {
         return commandManager;
     }
 
-    private String help() {
-        String result = "help: вывести справку по доступным командам\n" +
+    private MessageFromServer help() {
+        return new MessageFromServer("help: вывести справку по доступным командам\n" +
                 "info : вывести в стандартыный поток вывода информацию о коллекции (тип, дата инициализации, колличество элементов и т.п.)\n" +
                 "show: вывести в стандартный поток вывода все элементы коллекции в строковом представлении\n" +
                 "add {element}: добавить новый жлемент в коллекцию\n" +
@@ -58,97 +56,136 @@ public class CommandTCPManager {
                 "history: вывести последние 5 команд (без их аргументов)\n" +
                 "count_less_than_distance distance: вывести количество элементов, значение поля distance которых меньше заданного\n" +
                 "print_ascending: вывести элементы коллекции в порядке возрвстания\n" +
-                "print_descending: вывести элементы коллекции в порядке убывания";
-        return result;
+                "print_descending: вывести элементы коллекции в порядке убывания");
     }
 
-    private String info() {
-        String result = "";
-        ArrayList<Route> r = collectionHandler.getCollection();
-        result += collectionHandler.getCollection().getClass() + "\n" +
-                collectionHandler.getCollectionCreationDate() + "\n" +
-                collectionHandler.getCollectionSize();
-        return result;
+    private MessageFromServer info() {
+        return new MessageFromServer(CollectionHandler.getCollection().getClass() + "\n" +
+                CollectionHandler.getCollectionCreationDate() + "\n" +
+                CollectionHandler.getCollectionSize());
     }
 
-    private String show() {
+    private MessageFromServer show() {
         String result = "";
-        for (Route route : collectionHandler.getCollection()) {
-            result += route + "\n";
+        for (Route route : CollectionHandler.getCollection()) {
+            result += route + "\n\n";
         }
-        return result;
+        result = result.substring(0, result.length() - 2);
+        return new MessageFromServer(result);
     }
 
-    private String add() {
-
-        // TODO: incorrect!!! where is ID?!
-
-
-        return null;
-    } private String add(ArrayList<String> script, int index) {
-        // TODO: if-else on null and this method replace to file commandFileMeneger
-        //CollectionHandler.add((Route) (CommandHelper.makeRoute(script, index))[0]);
-        return null;
+    private MessageFromServer add() {
+        CollectionHandler.add(CommandHelper.getRoute());
+        return new MessageFromServer(null);
     }
 
-
-    private String update() {
-        // TODO: execute
-        return null;
+    private MessageFromServer update() {
+        try {
+            int id = Integer.parseInt(CommandHelper.getArgument());
+            Route route = CommandHelper.getRoute();
+            route.setId(id);
+            if (CollectionHandler.getIdsArray().contains(id)) {
+                CollectionHandler.update(CollectionHandler.getIdsArray().indexOf(id), route);
+                return new MessageFromServer(null);
+            } else if (id < 1) {
+                return new MessageFromServer("Incorrect id");
+            }
+            return new MessageFromServer("Collection don't contains object with this id");
+        } catch (Exception ex) {
+            return new MessageFromServer("Incorrect id");
+        }
     }
 
-    private String remove_by_id() {
-        // TODO: execute
-        return null;
+    private MessageFromServer remove_by_id() {
+        try {
+            int id = Integer.parseInt(CommandHelper.getArgument());
+            if (CollectionHandler.getIdsArray().contains(id)) {
+                CollectionHandler.remove(CollectionHandler.getCollection().get(CollectionHandler.getIdsArray().indexOf(id)));
+                return new MessageFromServer(null);
+            } else if (id < 1) {
+                return new MessageFromServer("Incorrect id");
+            }
+            return new MessageFromServer("Collection don't contains object with this id");
+        } catch (Exception ex) {
+            return new MessageFromServer("Incorrect id");
+        }
     }
 
-    private String clear() {
-        collectionHandler.setCollection(new ArrayList<Route>());
-        return null;
+    private MessageFromServer clear() {
+        CollectionHandler.setCollection(new ArrayList<Route>());
+        return new MessageFromServer(null);
     }
 
-    private String save() {
-        parser.writeFile(collectionHandler.getCollection(), "config.env");
-        return null;
+    private MessageFromServer execute_script() {
+        return new MessageFromServer(null);
     }
 
-    private String execute_script() {
-        // TODO: execute
-        return null;
+    private MessageFromServer insert_at() {
+        try {
+            int index = Integer.parseInt(CommandHelper.getArgument());
+            if (index > -1 && index < CollectionHandler.getCollectionSize() + 1) {
+                CollectionHandler.insertAt(index, CommandHelper.getRoute());
+                return new MessageFromServer(null);
+            }
+            return new MessageFromServer("Incorrect index");
+        } catch (Exception ex) {
+            return new MessageFromServer("Incorrect argument");
+        }
     }
 
-    private String exit() {
-        save();
-        System.exit(0);
-        return null;
+    private MessageFromServer reorder() {
+        ArrayList<Route> reorderCollection = new ArrayList<Route>();
+        for (Route route : CollectionHandler.getCollection()) {
+            reorderCollection.add(0, route);
+        }
+        CollectionHandler.setCollection(reorderCollection);
+        return new MessageFromServer(null);
     }
 
-    private String insert_at() {
-        // TODO: execute
-        return null;
+    private MessageFromServer history() {
+        return new MessageFromServer(CommandHelper.getHistory());
     }
 
-    private String reorder() {
-        // TODO: execute
-        return null;
+    private MessageFromServer count_less_than_distance() {
+        try {
+            int distance = Integer.parseInt(CommandHelper.getArgument());
+            int counter = 0;
+            for (Route route : CollectionHandler.getCollection()) {
+                if (route.getDistance() < distance) {
+                    counter++;
+                }
+            }
+            return new MessageFromServer(Integer.toString(counter));
+        } catch (Exception ex) {
+            return new MessageFromServer("Incorrect argument");
+        }
     }
 
-    private String history() {
-        return commandHelper.getHistory();
+    private MessageFromServer print_ascending() {
+        if (CollectionHandler.getCollectionSize() == 0) {
+            return new MessageFromServer(null);
+        }
+        TreeSet<Route> sortedCollection = new TreeSet<>(new AscendingComparator());
+        sortedCollection.addAll(CollectionHandler.getCollection());
+        String answer = "" + sortedCollection.pollFirst();
+        Route route;
+        while ((route = sortedCollection.pollFirst()) != null) {
+            answer += "\n" + route;
+        }
+        return new MessageFromServer(answer);
     }
 
-    private String count_less_than_distance() {
-        // TODO: execute
-        return "";
-    }
-
-    private String print_ascending() {
-        // TODO: execute
-        return "";
-    }
-
-    private String print_descending() {
-        // TODO: execute
-        return "";
+    private MessageFromServer print_descending() {
+        if (CollectionHandler.getCollectionSize() == 0) {
+            return new MessageFromServer(null);
+        }
+        TreeSet<Route> sortedCollection = new TreeSet<>(new DescendingComparator());
+        sortedCollection.addAll(CollectionHandler.getCollection());
+        String answer = "" + sortedCollection.pollFirst();
+        Route route;
+        while ((route = sortedCollection.pollFirst()) != null) {
+            answer += "\n" + route;
+        }
+        return new MessageFromServer(answer);
     }
 }

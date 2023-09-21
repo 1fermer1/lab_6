@@ -10,9 +10,7 @@ public class Main {
 
         //TODO: большие месседжи
 
-        Parser parser = new Parser();
-        CollectionHandler collectionHandler = new CollectionHandler();
-        parser.readFile("config.env");
+        Parser.readFile("config.env");
 
         LauncherService launcherService = new LauncherService();
         launcherService.init();
