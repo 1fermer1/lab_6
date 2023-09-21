@@ -86,7 +86,10 @@ public class LauncherService {
                 CommandHelper.setArgument(splitCommand[1]);
             }
             try {
-                System.out.println(commandConsoleManager.get(splitCommand[0]).execute());
+                String answer = commandConsoleManager.get(splitCommand[0]).execute();
+                if (answer != null) {
+                    System.out.println(answer);
+                }
                 System.out.print("> ");
             } catch (NullPointerException ex) {
                 System.out.print("Incorrect input. write \"help\" to see all commands and their arguments\n> ");

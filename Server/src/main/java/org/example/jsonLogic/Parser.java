@@ -61,6 +61,7 @@ public class Parser {
             for (Route route : routesList) {
                 gson.toJson(route, Route.class, writer);
             }
+            writer.endArray();
         } catch (IOException ex) {
             System.out.println("Export error");
             throw new RuntimeException(ex);

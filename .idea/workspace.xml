@@ -4,30 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e0a55187-0248-4223-b540-c7553a8f0e4d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Common/src/main/java/org/example/messages/MessageFromServer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Server/src/main/java/org/example/commandManager/IConsolable.java" afterDir="false" />
+    <list default="true" id="e0a55187-0248-4223-b540-c7553a8f0e4d" name="Changes" comment="работает!!! (если не считать половину команд из консоли сервера)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Client/src/main/java/org/example/commandManager/CommandConsoleManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/main/java/org/example/commandManager/CommandConsoleManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Client/src/main/java/org/example/commandManager/CommandFileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/main/java/org/example/commandManager/CommandFileManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/main/java/org/example/commandManager/CommandHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/main/java/org/example/commandManager/CommandHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/main/java/org/example/jsonLogic/ZonedDateTimeAdapter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/main/java/org/example/main/LauncherService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/main/java/org/example/main/LauncherService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/src/main/java/org/example/data/Location.java" beforeDir="false" afterPath="$PROJECT_DIR$/Common/src/main/java/org/example/data/Location.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/src/main/java/org/example/commandManager/CommandConsoleManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/org/example/commandManager/CommandConsoleManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/src/main/java/org/example/commandManager/CommandFileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/org/example/commandManager/CommandFileManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/src/main/java/org/example/commandManager/CommandHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/org/example/commandManager/CommandHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/src/main/java/org/example/commandManager/CommandTCPManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/org/example/commandManager/CommandTCPManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/src/main/java/org/example/commandManager/IExecutable.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/org/example/commandManager/IExecutable.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Server/src/main/java/org/example/jsonLogic/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/org/example/jsonLogic/Parser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/src/main/java/org/example/jsonLogic/ZonedDateTimeAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/Common/src/main/java/org/example/jsonLogic/ZonedDateTimeAdapter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Server/src/main/java/org/example/main/LauncherService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/org/example/main/LauncherService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/src/main/java/org/example/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/org/example/main/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/builds/client.jar" beforeDir="false" afterPath="$PROJECT_DIR$/builds/client.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/builds/script101.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/builds/script_vtornik.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/builds/routes.json" beforeDir="false" afterPath="$PROJECT_DIR$/builds/routes.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/builds/server.jar" beforeDir="false" afterPath="$PROJECT_DIR$/builds/server.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,11 +68,25 @@
       <option name="presentableId" value="Default" />
       <updated>1695235658646</updated>
       <workItem from="1695235662753" duration="16169000" />
-      <workItem from="1695257443400" duration="5822000" />
+      <workItem from="1695257443400" duration="5882000" />
+      <workItem from="1695264109893" duration="2116000" />
     </task>
+    <task id="LOCAL-00001" summary="работает!!! (если не считать половину команд из консоли сервера)">
+      <option name="closed" value="true" />
+      <created>1695263887671</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1695263887671</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="работает!!! (если не считать половину команд из консоли сервера)" />
+    <option name="LAST_COMMIT_MESSAGE" value="работает!!! (если не считать половину команд из консоли сервера)" />
   </component>
 </project>

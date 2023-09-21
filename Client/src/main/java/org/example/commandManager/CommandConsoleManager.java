@@ -79,6 +79,7 @@ public class CommandConsoleManager {
         commandFileManager.setScript(script);
         commandFileManager.setIndex(0);
         commandFileManager.launcher();
+        commandFileManager.reloadRecursionCounter();
         return new MessageFromClient("execute_script", null, null);
     }
 

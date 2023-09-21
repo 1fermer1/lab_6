@@ -164,4 +164,8 @@ public class CommandFileManager {
     public void setIndex(int index) {
         this.index = index;
     }
+
+    public void reloadRecursionCounter() {
+        CommandFileManager.recursionCounter = 0;
+    }
 }
